@@ -1,7 +1,8 @@
-# Shopping Cart 🛒
+![Itgam Banner](https://raw.githubusercontent.com/brayandotor/VuesJS-ShoppingCart1/main/md/img/banner.png)
+# Shopping Cart Proyect🛒
 
-proyecto didactico para el cuerso de desarrollo de aplicaciones para dispositivos moviles usando _VueJs usando composition API_
+Proyecto didactico para el cuerso de desarrollo de aplicaciones para dispositivos moviles usando _VueJs composition API_
 
-# Autor 
+# Autor 👨‍🎓
 [Brayan Dotor](https://github.com/brayandotor)
 
