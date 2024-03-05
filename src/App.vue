@@ -11,18 +11,18 @@ const items = ref([
 {id: 1, label:'Arroz'},
 {id: 2, label:'Carne'},
 {id: 3, label:'Pan'},
-{id: 4, label:'huevos'}
+{id: 4, label:'Huevos'}
 ]);
 </script>
 
 <template>
   <h1><i v-bind:class="shoppingIcons">local_mall</i>{{header}}</h1>
   <ul>
-    <li v-for="item in items" v-bind:key="item.id">⭐ {{ item.label }}</li>
+    <li v-for="{id, label } in items" v-bind:key="id"> ⭐{{ i }} {{ label }}</li>
    
   </ul>
 </template>
-
+ 
 <style scoped>
 .shopping-cart-icon{
   font-size:  2rem;
