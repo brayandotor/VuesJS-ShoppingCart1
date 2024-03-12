@@ -16,12 +16,17 @@ const items = ref([
 const newitem =ref('');
 </script>
 
-<template>
-  <h1><i v-bind:class="shoppingIcons">local_mall</i>{{header}}</h1>
-  <input v-model="newitem" type ="text" placeholder="Agregar articulo">
+<<template>
+  <h1><i :class="shoppingIcon">local_mall</i>{{ header }}</h1>
+  <div class="add-item form">
+    <input v-on:keyup.enter="items.push({id: items.length, label: newItem})" v-model="newItem" type="text" placeholder="Agregar Articulo">
+    <!-- Checkbox  -->
+    <label><input type="checkbox" v-model="newItemHightPriority" >Alta Prioridad</label>
+    <!-- Boton -->
+    <button class="btn-primary" v-on:click="items.push({id: items.length, label: newItem})">Agregar Articulo</button>
+  </div>
   <ul>
-    <li v-for="{id, label } in items" v-bind:key="id"> ⭐{{ i }} {{ label }}</li>
-   
+   <li v-for="{id, label} in items" v-bind:key="id">⭐ {{ label }}</li>
   </ul>
 </template>
  
