@@ -1,38 +1,45 @@
 <script setup>
-// importando funcion para crear referncias reactivas
-import {ref} from 'vue'
-// creando una referencia reactiva de tipo string
-const header = ref('App lista de compras');
-const shoppingIcons =('material-icons shopping-cart-icon')
-//creando una referencia reactiva
-//para almacenar la lista de compras
-const items = ref([
-{id: 0, label:'Leche'},
-{id: 1, label:'Arroz'},
-{id: 2, label:'Carne'},
-{id: 3, label:'Pan'},
-{id: 4, label:'Huevos'}
-]);
-const newitem =ref('');
+// Importando funcion para crear referencias reactivas
+import { ref } from 'vue'
+//Creando un tipo de referencia reactiva de tipo string
+const header = ref('App Lista de Compras');
+const shoppingIcon = ref ('material-icons shopping-cart-icon');
+// Creando una referencia reactiva para almacenar el valor de la lista
+const items = ref ([
+  {id: 0, label:'Leche'}, 
+  {id: 1, label:'Arroz'}, 
+  {id: 2, label:'Carne'}, 
+  {id: 3, label:'Pan'}, 
+  {id: 4, label:'Huevos'}
+  ]);
+  const newItem = ref('');
+  const newItemHightPriority = ref(false);
+  // Metodos
+  const saveItems = () => {
+    // Agrega un nuevo elemento a la lista proveniente de la caja de texto
+    items.value.push({id: items.value.length, label: newItem.value})
+    // Borramos el contenido de la caja de texto.
+    newItem.value=""
+  };
 </script>
 
-<<template>
+<template>
   <h1><i :class="shoppingIcon">local_mall</i>{{ header }}</h1>
-  <div class="add-item form">
-    <input v-on:keyup.enter="items.push({id: items.length, label: newItem})" v-model="newItem" type="text" placeholder="Agregar Articulo">
+  <form v-on:submit.prevent="saveItems" class="add-item form">
+    <input v-model="newItem" type="text" placeholder="Agregar Articulo">
     <!-- Checkbox  -->
     <label><input type="checkbox" v-model="newItemHightPriority" >Alta Prioridad</label>
     <!-- Boton -->
-    <button class="btn-primary" v-on:click="items.push({id: items.length, label: newItem})">Agregar Articulo</button>
-  </div>
+    <button class="btn-primary">Agregar Articulo</button>
+  </form>
   <ul>
    <li v-for="{id, label} in items" v-bind:key="id">⭐ {{ label }}</li>
   </ul>
 </template>
- 
+
 <style scoped>
-.shopping-cart-icon{
-  font-size:  2rem;
+.shopping-cart-icon {
+  font-size: 2rem;
 }
-</style> 
+</style>
 
